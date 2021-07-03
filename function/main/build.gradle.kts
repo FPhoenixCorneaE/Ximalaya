@@ -16,8 +16,8 @@ android {
 }
 
 dependencies {
-    implementation(Deps.AndroidX.constraintLayout)
     implementation(Deps.FPhoenixCorneaE.AndroidAspectj.aspectj)
     kapt(Deps.FPhoenixCorneaE.AndroidAspectj.aspectjCompiler)
-    implementation(Deps.FPhoenixCorneaE.jetpackMvvm)
+    implementation(project(mapOf("path" to ":library:common")))
+    implementation(project(mapOf("path" to ":library:ximalaya")))
 }

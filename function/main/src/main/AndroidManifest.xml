@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.fphoenixcorneae.himalaya.main">
+    package="com.fphoenixcorneae.himalaya.main">
 
-    <application>
-        <activity android:name=".mvvm.SplashActivity"
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ting"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ting"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".mvvm.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
