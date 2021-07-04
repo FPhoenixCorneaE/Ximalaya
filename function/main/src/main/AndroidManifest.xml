@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fphoenixcorneae.himalaya.main">
+    package="com.fphoenixcorneae.ximalaya.main">
 
     <application
         android:allowBackup="true"
@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mvvm.SplashActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:launchMode="singleTask">
+            android:name="com.fphoenixcorneae.ximalaya.main.mvvm.SplashActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateUnchanged|stateHidden|stateAlwaysHidden|adjustResize"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale|screenLayout|uiMode|smallestScreenSize|layoutDirection"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

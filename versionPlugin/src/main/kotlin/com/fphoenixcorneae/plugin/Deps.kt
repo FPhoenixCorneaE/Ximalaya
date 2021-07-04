@@ -6,10 +6,12 @@ object Deps {
         object AndroidAspectj {
             private const val version = "1.0.5"
             const val aspectj = "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj:${version}"
-            const val aspectjCompiler = "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj-compiler:${version}"
+            const val aspectjCompiler =
+                "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj-compiler:${version}"
         }
 
-        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.0.4"
+        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.0.8"
+        const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.1"
     }
 
     /** Plugin */
@@ -22,7 +24,7 @@ object Deps {
     object Android {
         const val compileSdkVersion = 30
         const val buildToolsVersion = "30.0.3"
-        const val applicationId = "com.fphoenixcorneae.himalaya"
+        const val applicationId = "com.fphoenixcorneae.ximalaya"
         const val minSdkVersion = 21
         const val targetSdkVersion = 30
         const val versionCode = 100
@@ -44,55 +46,21 @@ object Deps {
     /** AndroidX */
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.2.0"
-        const val coreKtx = "androidx.core:core-ktx:1.3.2"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
-        const val activityKtx = "androidx.activity:activity-ktx:1.2.2"
+        const val material = "com.google.android.material:material:1.3.0"
+        const val coreKtx = "androidx.core:core-ktx:1.3.2"
+        // activity
+        const val activity = "androidx.activity:activity:1.2.3"
+        const val activityKtx = "androidx.activity:activity-ktx:1.2.3"
+        // fragment
+        const val fragment = "androidx.fragment:fragment:1.3.3"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.3"
+        // recyclerView
+        const val recyclerView = "androidx.recyclerview:recyclerview:1.2.0"
+        // viewpager2
         const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
+        // palette
         const val paletteKtx = "androidx.palette:palette-ktx:1.0.0"
-    }
-
-    /** Lifecycle */
-    object Lifecycle {
-        private const val version = "2.3.1"
-        const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-        const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
-    }
-
-    /** Navigation */
-    object Navigation {
-        private const val version = "2.3.5"
-        const val commonKtx = "androidx.navigation:navigation-common-ktx:$version"
-        const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
-        const val runtimeKtx = "androidx.navigation:navigation-runtime-ktx:$version"
-        const val uiKtx = "androidx.navigation:navigation-ui-ktx:$version"
-    }
-
-    /** Coroutines */
-    object Coroutines {
-        private const val version = "1.4.3"
-        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
-        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
-    }
-
-    /** Kotlin Coroutines Image Loader */
-    object Coil {
-        private const val version = "1.2.1"
-        const val coil = "io.coil-kt:coil:$version"
-        const val gif = "io.coil-kt:coil-gif:$version"
-        const val svg = "io.coil-kt:coil-svg:$version"
-        const val video = "io.coil-kt:coil-video:$version"
-    }
-
-    /** CoilTransformations */
-    object CoilTransformations {
-        private const val version = "1.0.0"
-        const val transformations =
-            "com.github.Commit451.coil-transformations:transformations:$version"
-        const val transformationsGpu =
-            "com.github.Commit451.coil-transformations:transformations-gpu:$version"
-        const val transformationsFaceDetection =
-            "com.github.Commit451.coil-transformations:transformations-face-detection:$version"
     }
 
     /** Test */

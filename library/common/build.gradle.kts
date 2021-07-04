@@ -15,6 +15,16 @@ android {
 }
 
 dependencies {
+    api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.constraintLayout)
+    api(Deps.AndroidX.material)
+    api(Deps.AndroidX.coreKtx)
+    api(Deps.AndroidX.activity)
+    api(Deps.AndroidX.activityKtx)
+    api(Deps.AndroidX.fragment)
+    api(Deps.AndroidX.fragmentKtx)
+    api(Deps.AndroidX.recyclerView)
+    api(Deps.AndroidX.viewpager2)
     api(Deps.FPhoenixCorneaE.jetpackMvvm)
+    api(Deps.FPhoenixCorneaE.commonUtil)
 }
