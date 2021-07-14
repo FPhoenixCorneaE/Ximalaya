@@ -1,9 +1,8 @@
-package com.fphoenixcorneae.ximalaya.main.mvvm
+package com.fphoenixcorneae.ximalaya.main.mvvm.splash
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import com.fphoenixcorneae.ext.startKtxActivity
 import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
 import com.fphoenixcorneae.ximalaya.main.databinding.ActivitySplashBinding
 import kotlinx.coroutines.delay
@@ -25,7 +24,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         lifecycleScope.launchWhenStarted {
             delay(SPLASH_STAY_TIME)
-            startKtxActivity<SplashAdActivity>(flags = null, extra = null, value = null)
+            SplashAdDialog().show(mContext)
         }
     }
 

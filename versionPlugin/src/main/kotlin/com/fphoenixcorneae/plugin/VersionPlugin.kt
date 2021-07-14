@@ -120,6 +120,7 @@ class VersionPlugin : Plugin<Project> {
      * 公共需要添加的设置，如 sdk 目标版本，jdk 版本，jvm 目标版本等
      */
     private fun BaseExtension.applyBaseCommons(project: Project) {
+        compileSdkVersion(Deps.Android.compileSdkVersion)
         buildToolsVersion(Deps.Android.buildToolsVersion)
 
         defaultConfig {

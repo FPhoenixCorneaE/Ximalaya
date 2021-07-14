@@ -5,22 +5,21 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ting"
-        android:label="@string/app_name"
+        android:label="@string/main_app_name"
         android:roundIcon="@drawable/ting"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.fphoenixcorneae.ximalaya.main.mvvm.SplashActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateUnchanged|stateHidden|stateAlwaysHidden|adjustResize"
+            android:name="com.fphoenixcorneae.ximalaya.main.mvvm.splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|locale|screenLayout|uiMode|smallestScreenSize|layoutDirection"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustUnspecified|stateUnchanged|stateHidden|stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

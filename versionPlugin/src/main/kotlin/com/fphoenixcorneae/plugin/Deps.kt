@@ -10,8 +10,9 @@ object Deps {
                 "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj-compiler:${version}"
         }
 
-        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.0.8"
-        const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.1"
+        const val coRetrofit = "com.github.FPhoenixCorneaE:CoRetrofit:1.0.1"
+        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.5"
+        const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
     }
 
     /** Plugin */
@@ -39,7 +40,7 @@ object Deps {
 
     /** Kotlin */
     object Kotlin {
-        private const val version = "1.5.10"
+        private const val version = "1.5.20"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
     }
 
@@ -49,18 +50,33 @@ object Deps {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val material = "com.google.android.material:material:1.3.0"
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
+
         // activity
         const val activity = "androidx.activity:activity:1.2.3"
         const val activityKtx = "androidx.activity:activity-ktx:1.2.3"
+
         // fragment
         const val fragment = "androidx.fragment:fragment:1.3.3"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.3"
+
         // recyclerView
         const val recyclerView = "androidx.recyclerview:recyclerview:1.2.0"
+
         // viewpager2
         const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
+
         // palette
         const val paletteKtx = "androidx.palette:palette-ktx:1.0.0"
+    }
+
+    object ARouter {
+        private const val version = "1.5.2"
+        const val api = "com.alibaba:arouter-api:$version"
+        const val compiler = "com.alibaba:arouter-compiler:$version"
+    }
+
+    object ThirdPart {
+        const val noDrawable = "com.github.whataa:noDrawable:1.1.1"
     }
 
     /** Test */

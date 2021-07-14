@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="com.fphoenixcorneae.ximalaya.main.R" />
+
+        <variable
+            name="viewModel"
+            type="com.fphoenixcorneae.ximalaya.main.mvvm.splash.SplashViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAd"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
+            android:scaleType="centerCrop"
+            android:visibility="@{viewModel.imgAd != null ? View.VISIBLE : View.INVISIBLE}"
+            app:imgUrl="@{viewModel.imgAd}"
+            app:layout_constraintBottom_toTopOf="@id/ivLogo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderResId="@{R.mipmap.common_ic_image_placeholder}"
+            tools:src="@mipmap/common_ic_image_placeholder" />
+
+        <TextView
+            android:id="@+id/tvSkipAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@{viewModel.skipAdText}"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:drawable_radius="@{4}"
+            app:drawable_solidColor="@{@color/color_0x44000000}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onSingleClick="@{() -> viewModel.onClickSkipAd()}"
+            tools:text="@string/main_skip_ad" />
+
+        <TextView
+            android:id="@+id/tvCopyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_0x77000000"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:text="@{viewModel.copyright}"
+            android:textColor="@color/color_0xf5f5f5"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivAd"
+            app:visible="@{!TextUtils.isEmpty(viewModel.copyright)}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAd" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:src="@mipmap/main_ic_xmly_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,3 +1,7 @@
+apply {
+    plugin(Plugin.aRouter)
+}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -8,6 +12,7 @@ buildscript {
     dependencies {
         classpath(Classpath.androidToolsBuildGradle)
         classpath(Classpath.kotlinGradlePlugin)
+        classpath(Classpath.aRouter)
         classpath(Classpath.androidAspectj)
 
         // NOTE: Do not place your application dependencies here; they belong

@@ -5,6 +5,12 @@ plugins {
     id(Plugin.composingBuilds)
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.name)
+    }
+}
+
 android {
     compileSdkVersion(Deps.Android.compileSdkVersion)
 
@@ -15,6 +21,7 @@ android {
 }
 
 dependencies {
+    compileOnly(Deps.Kotlin.stdlib)
     api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.constraintLayout)
     api(Deps.AndroidX.material)
@@ -25,6 +32,10 @@ dependencies {
     api(Deps.AndroidX.fragmentKtx)
     api(Deps.AndroidX.recyclerView)
     api(Deps.AndroidX.viewpager2)
+    api(Deps.ARouter.api)
+    kapt(Deps.ARouter.compiler)
+    api(Deps.FPhoenixCorneaE.coRetrofit)
     api(Deps.FPhoenixCorneaE.jetpackMvvm)
     api(Deps.FPhoenixCorneaE.commonUtil)
+    api(Deps.ThirdPart.noDrawable)
 }
