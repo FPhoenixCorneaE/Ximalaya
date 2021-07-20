@@ -10,6 +10,7 @@ import com.fphoenixcorneae.jetpackmvvm.ext.defaultMMKV
 import com.fphoenixcorneae.util.FileProviderUtil
 import com.fphoenixcorneae.util.FileUtil
 import com.fphoenixcorneae.ximalaya.common.constant.Constant
+import com.fphoenixcorneae.ximalaya.common.ext.indent
 import com.fphoenixcorneae.ximalaya.common.ext.launch
 import com.fphoenixcorneae.ximalaya.common.service.CommonService
 import com.fphoenixcorneae.ximalaya.main.R
@@ -24,40 +25,51 @@ import java.util.*
  */
 class SplashViewModel : BaseViewModel() {
 
-    private val commonService by lazy {
+    private val mCommonService by lazy {
         RetrofitFactory.getApi(CommonService::class.java, Constant.Host.BING)
     }
-    private val splashService by lazy {
+    private val mSplashService by lazy {
         RetrofitFactory.getApi(SplashService::class.java, Constant.Host.BING)
     }
-
-    private val _imgAd = MutableLiveData<Any?>()
-    val imgAd: LiveData<Any?> = _imgAd
-
-    private val _copyright = MutableLiveData<String?>()
-    val copyright: LiveData<String?> = _copyright
 
     /** 剩余跳过时间 */
     private var mResidualSkipTime = SKIP_COUNTDOWN_TIME
 
+    /**
+     * 广告图片
+     */
+    private val _imgAd = MutableLiveData<Any?>()
+    val imgAd: LiveData<Any?>
+        get() = _imgAd
+
+    /**
+     * 广告版权所有
+     */
+    private val _copyright = MutableLiveData<CharSequence?>()
+    val copyright: LiveData<CharSequence?>
+        get() = _copyright
+
     /** 跳过广告倒计时文本 */
     private val _skipAdText = MutableLiveData(getResidualSkipTimeText())
-    val skipAdText: LiveData<String> = _skipAdText
+    val skipAdText: LiveData<String>
+        get() = _skipAdText
 
     /** 跳过广告倒计时结束 */
     private val _skipCountdownFinished = MutableLiveData<Boolean>()
-    val skipCountdownFinished: LiveData<Boolean> = _skipCountdownFinished
+    val skipCountdownFinished: LiveData<Boolean>
+        get() = _skipCountdownFinished
 
     /** 是否跳过广告 */
     private val _isSkipAd = MutableLiveData<Boolean>()
-    val isSkipAd: LiveData<Boolean> = _isSkipAd
+    val isSkipAd: LiveData<Boolean>
+        get() = _isSkipAd
 
     /**
      * 获取启动广告
      */
     fun getSplashAd(type: String, status: String) {
         launch({
-            splashService.getSplashAd(type, status)
+            mSplashService.getSplashAd(type, status)
         }, {
             val localAdUrl = defaultMMKV.decodeString(Constant.SP.AD_URL)
             val localAdImgFile = File(Constant.Default.AD_IMG_FILE_PATH)
@@ -67,12 +79,12 @@ class SplashViewModel : BaseViewModel() {
                 val adImgUri = FileProviderUtil.getUriForFile(localAdImgFile)
                 _imgAd.postValue(adImgUri)
                 val copyright = defaultMMKV.decodeString(Constant.SP.AD_COPYRIGHT)
-                _copyright.postValue(copyright)
+                _copyright.postValue(copyright.indent())
             } else {
                 val copyright = it.images?.get(0)?.copyright
                 val copyrightLink = it.images?.get(0)?.copyrightlink
                 _imgAd.postValue(adUrl)
-                _copyright.postValue(copyright)
+                _copyright.postValue(copyright.indent())
                 downloadAdImg(adUrl, copyright, copyrightLink)
             }
         })
@@ -83,7 +95,7 @@ class SplashViewModel : BaseViewModel() {
      */
     fun startSkipCountdown() {
         viewModelScope.launch {
-            repeat(SKIP_COUNTDOWN_TIME) {
+            repeat(SKIP_COUNTDOWN_TIME + 1) {
                 delay(1_000)
                 mResidualSkipTime--
                 _skipAdText.postValue(getResidualSkipTimeText())
@@ -110,7 +122,7 @@ class SplashViewModel : BaseViewModel() {
      */
     private fun downloadAdImg(imgUrl: String, copyright: String?, copyrightLink: String?) {
         launch({
-            commonService.getDataByUrl(imgUrl)
+            mCommonService.getDataByUrl(imgUrl)
         }, {
             val writeSuccess = FileUtil.writeFileFromIS(Constant.Default.AD_IMG_FILE_PATH, it.byteStream(), false)
             if (writeSuccess) {

@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import com.fphoenixcorneae.jetpackmvvm.base.dialog.BaseDialog
-import com.fphoenixcorneae.ximalaya.main.databinding.DialogSplashAdBinding
+import com.fphoenixcorneae.ximalaya.main.R
+import com.fphoenixcorneae.ximalaya.main.databinding.MainDialogSplashAdBinding
 
 /**
  * @desc：启动广告页弹窗
  * @date：2021/7/4 18:05
  */
-class SplashAdDialog : BaseDialog<DialogSplashAdBinding>() {
+class SplashAdDialog : BaseDialog<MainDialogSplashAdBinding>() {
 
     private val mViewModel by viewModels<SplashViewModel>()
 
-    override fun initViewBinding(): DialogSplashAdBinding {
-        return DialogSplashAdBinding.inflate(layoutInflater)
+    override fun initViewBinding(): MainDialogSplashAdBinding {
+        return MainDialogSplashAdBinding.inflate(layoutInflater)
     }
 
     override fun initView() {
@@ -51,6 +52,6 @@ class SplashAdDialog : BaseDialog<DialogSplashAdBinding>() {
     }
 
     override fun getWindowAnimations(): Int {
-        return 0
+        return R.style.SplashAdDialogAnimation
     }
 }

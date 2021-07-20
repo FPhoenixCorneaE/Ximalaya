@@ -4,17 +4,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
-import com.fphoenixcorneae.ximalaya.main.databinding.ActivitySplashBinding
+import com.fphoenixcorneae.ximalaya.main.databinding.MainActivitySplashBinding
 import kotlinx.coroutines.delay
 
 /**
  * @desc：启动页
  * @date：2021/7/4 17:09
  */
-class SplashActivity : BaseActivity<ActivitySplashBinding>() {
+class SplashActivity : BaseActivity<MainActivitySplashBinding>() {
 
-    override fun initViewBinding(): ActivitySplashBinding {
-        return ActivitySplashBinding.inflate(layoutInflater)
+    override fun initViewBinding(): MainActivitySplashBinding {
+        return MainActivitySplashBinding.inflate(layoutInflater)
     }
 
     override fun initToolbar(): View? {

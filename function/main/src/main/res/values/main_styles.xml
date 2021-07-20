@@ -12,4 +12,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/main_shape_splash_bg</item>
     </style>
+
+    <style name="SplashAdDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/main_dialog_enter_splash_ad</item>
+        <item name="android:windowExitAnimation">@anim/main_dialog_exit_splash_ad</item>
+    </style>
 </resources>
