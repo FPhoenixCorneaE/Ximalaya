@@ -6,13 +6,13 @@ object Deps {
         object AndroidAspectj {
             private const val version = "1.0.5"
             const val aspectj = "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj:${version}"
-            const val aspectjCompiler =
-                "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj-compiler:${version}"
+            const val aspectjCompiler = "com.github.FPhoenixCorneaE.AndroidAspectj:aspectj-compiler:${version}"
         }
 
         const val coRetrofit = "com.github.FPhoenixCorneaE:CoRetrofit:1.0.1"
         const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.5"
         const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
+        const val smartProgressBar = "com.github.FPhoenixCorneaE:SmartProgressBar:1.0.3"
     }
 
     /** Plugin */
@@ -59,22 +59,34 @@ object Deps {
         const val fragment = "androidx.fragment:fragment:1.3.3"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.3"
 
+        // palette
+        const val paletteKtx = "androidx.palette:palette-ktx:1.0.0"
+
         // recyclerView
         const val recyclerView = "androidx.recyclerview:recyclerview:1.2.0"
 
+        // startup
+        const val startup = "androidx.startup:startup-runtime:1.0.0"
+
         // viewpager2
         const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
-
-        // palette
-        const val paletteKtx = "androidx.palette:palette-ktx:1.0.0"
     }
 
+    /** Coroutines */
+    object Coroutines {
+        private const val version = "1.5.0"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version}"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
+    }
+
+    /** ARouter */
     object ARouter {
         private const val version = "1.5.2"
         const val api = "com.alibaba:arouter-api:$version"
         const val compiler = "com.alibaba:arouter-compiler:$version"
     }
 
+    /** ThirdPart */
     object ThirdPart {
         const val noDrawable = "com.github.whataa:noDrawable:1.1.1"
     }

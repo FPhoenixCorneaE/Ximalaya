@@ -1,4 +1,4 @@
-package com.fphoenixcorneae.ximalaya.common.startup
+package com.fphoenixcorneae.ximalaya.thirdpart.startup
 
 import android.content.Context
 import androidx.startup.Initializer
@@ -10,6 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
+/**
+ * @desc：阿里路由初始化器
+ * @date：2021/07/14 15:02
+ */
 class ARouterInitializer : Initializer<Unit>, CoroutineScope by MainScope() {
     override fun create(context: Context) {
         launch(Dispatchers.IO) {

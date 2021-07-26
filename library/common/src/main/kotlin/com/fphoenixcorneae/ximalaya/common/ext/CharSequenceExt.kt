@@ -5,6 +5,9 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 
+/**
+ * 文字缩进
+ */
 fun CharSequence?.indent(spaceCount: Int = 8) = kotlin.run {
     var blankSpace = ""
     for (index in 1..spaceCount) {

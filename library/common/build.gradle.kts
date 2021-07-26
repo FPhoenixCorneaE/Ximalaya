@@ -5,12 +5,6 @@ plugins {
     id(Plugin.composingBuilds)
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.name)
-    }
-}
-
 android {
     compileSdkVersion(Deps.Android.compileSdkVersion)
 
@@ -32,10 +26,9 @@ dependencies {
     api(Deps.AndroidX.fragmentKtx)
     api(Deps.AndroidX.recyclerView)
     api(Deps.AndroidX.viewpager2)
-    api(Deps.ARouter.api)
-    kapt(Deps.ARouter.compiler)
     api(Deps.FPhoenixCorneaE.coRetrofit)
     api(Deps.FPhoenixCorneaE.jetpackMvvm)
     api(Deps.FPhoenixCorneaE.commonUtil)
-    api(Deps.ThirdPart.noDrawable)
+    api(Deps.FPhoenixCorneaE.smartProgressBar)
+    api(project(mapOf("path" to ":library:thirdpart")))
 }

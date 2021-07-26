@@ -47,7 +47,7 @@ class VersionPlugin : Plugin<Project> {
                 }
                 is KotlinAndroidPluginWrapper -> {
                     // 根据 project build.gradle.kts 中的配置动态设置 kotlinVersion
-                    project.getKotlinPluginVersion()?.also { kotlinVersion ->
+                    project.getKotlinPluginVersion().also { kotlinVersion ->
                     }
                 }
             }

@@ -21,7 +21,7 @@ import java.util.*
 
 /**
  * @desc：SplashViewModel
- * @date：2021-07-13 14:17
+ * @date：2021/07/13 14:17
  */
 class SplashViewModel : BaseViewModel() {
 
@@ -31,9 +31,6 @@ class SplashViewModel : BaseViewModel() {
     private val mSplashService by lazy {
         RetrofitFactory.getApi(SplashService::class.java, Constant.Host.BING)
     }
-
-    /** 剩余跳过时间 */
-    private var mResidualSkipTime = SKIP_COUNTDOWN_TIME
 
     /**
      * 广告图片
@@ -64,6 +61,9 @@ class SplashViewModel : BaseViewModel() {
     val isSkipAd: LiveData<Boolean>
         get() = _isSkipAd
 
+    /** 剩余跳过时间 */
+    private var mResidualSkipTime = SKIP_COUNTDOWN_TIME
+
     /**
      * 获取启动广告
      */
@@ -82,7 +82,7 @@ class SplashViewModel : BaseViewModel() {
                 _copyright.postValue(copyright.indent())
             } else {
                 val copyright = it.images?.get(0)?.copyright
-                val copyrightLink = it.images?.get(0)?.copyrightlink
+                val copyrightLink = it.images?.get(0)?.copyrightLink
                 _imgAd.postValue(adUrl)
                 _copyright.postValue(copyright.indent())
                 downloadAdImg(adUrl, copyright, copyrightLink)

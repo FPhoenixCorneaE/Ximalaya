@@ -11,6 +11,7 @@ import com.fphoenixcorneae.coretrofit.model.paresResult
 import com.fphoenixcorneae.ext.appContext
 import com.fphoenixcorneae.ext.loge
 import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
+import com.fphoenixcorneae.jetpackmvvm.base.dialog.BaseDialog
 import com.fphoenixcorneae.jetpackmvvm.base.fragment.BaseFragment
 import com.fphoenixcorneae.jetpackmvvm.base.viewmodel.BaseViewModel
 import com.fphoenixcorneae.jetpackmvvm.livedata.Event
@@ -19,6 +20,7 @@ import kotlinx.coroutines.*
 
 /**
  * @desc：BaseViewModel 请求协程封装
+ * @date：2021/07/14 16:23
  */
 
 /**
@@ -58,6 +60,35 @@ fun <T> BaseActivity<*>.parseState(
  * @param onLoading   加载中
  */
 fun <T> BaseFragment<*>.parseState(
+    netResult: NetResult<T>,
+    onSuccess: (T) -> Unit,
+    onError: ((ApiException) -> Unit)? = null,
+    onLoading: (() -> Unit)? = null
+) {
+    when (netResult) {
+        is NetResult.Loading -> {
+            showLoading(netResult.loadingMessage)
+            onLoading?.invoke()
+        }
+        is NetResult.Success -> {
+            showContent()
+            onSuccess(netResult.data)
+        }
+        is NetResult.Error -> {
+            showError(netResult.exception.errorMsg)
+            onError?.run { this(netResult.exception) }
+        }
+    }
+}
+
+/**
+ * 显示页面状态
+ * @param netResult   接口返回值
+ * @param onSuccess   成功回调
+ * @param onError     失败回调
+ * @param onLoading   加载中
+ */
+fun <T> BaseDialog<*>.parseState(
     netResult: NetResult<T>,
     onSuccess: (T) -> Unit,
     onError: ((ApiException) -> Unit)? = null,

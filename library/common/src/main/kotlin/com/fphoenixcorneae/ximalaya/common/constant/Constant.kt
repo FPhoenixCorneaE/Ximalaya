@@ -1,7 +1,11 @@
 package com.fphoenixcorneae.ximalaya.common.constant
 
-import com.fphoenixcorneae.ext.appContext
+import com.fphoenixcorneae.util.PathUtil
 
+/**
+ * @desc：常量
+ * @date：2021/07/14 11:08
+ */
 object Constant {
 
     /**
@@ -25,8 +29,11 @@ object Constant {
         const val AD_COPYRIGHT_LINK = "ad_copyright_link"
     }
 
+    /**
+     * 默认
+     */
     object Default {
         private const val AD_NAME = "/ad.jpg"
-        val AD_IMG_FILE_PATH by lazy { appContext.filesDir.absolutePath + AD_NAME }
+        val AD_IMG_FILE_PATH by lazy { PathUtil.internalFilesPath + AD_NAME }
     }
 }
