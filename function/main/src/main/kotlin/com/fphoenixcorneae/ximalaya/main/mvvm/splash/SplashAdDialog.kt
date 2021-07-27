@@ -22,6 +22,7 @@ class SplashAdDialog : BaseDialog<MainDialogSplashAdBinding>() {
     override fun initView() {
         mViewBinding.apply {
             viewModel = mViewModel
+            spbSkipAd.setProgress(0f, SplashViewModel.SKIP_COUNTDOWN_TIME_MILLIS)
         }
     }
 

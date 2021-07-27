@@ -32,6 +32,9 @@ class SplashViewModel : BaseViewModel() {
         RetrofitFactory.getApi(SplashService::class.java, Constant.Host.BING)
     }
 
+    /** 剩余跳过时间 */
+    private var mResidualSkipTime = SKIP_COUNTDOWN_TIME
+
     /**
      * 广告图片
      */
@@ -46,8 +49,13 @@ class SplashViewModel : BaseViewModel() {
     val copyright: LiveData<CharSequence?>
         get() = _copyright
 
+    /** 倒计时文本 */
+    private val _countdownText = MutableLiveData(getCountdownText())
+    val countdownText: LiveData<String>
+        get() = _countdownText
+
     /** 跳过广告倒计时文本 */
-    private val _skipAdText = MutableLiveData(getResidualSkipTimeText())
+    private val _skipAdText = MutableLiveData(getResidualSkipAdTimeText())
     val skipAdText: LiveData<String>
         get() = _skipAdText
 
@@ -60,9 +68,6 @@ class SplashViewModel : BaseViewModel() {
     private val _isSkipAd = MutableLiveData<Boolean>()
     val isSkipAd: LiveData<Boolean>
         get() = _isSkipAd
-
-    /** 剩余跳过时间 */
-    private var mResidualSkipTime = SKIP_COUNTDOWN_TIME
 
     /**
      * 获取启动广告
@@ -98,24 +103,37 @@ class SplashViewModel : BaseViewModel() {
             repeat(SKIP_COUNTDOWN_TIME + 1) {
                 delay(1_000)
                 mResidualSkipTime--
-                _skipAdText.postValue(getResidualSkipTimeText())
+                _countdownText.postValue(getCountdownText())
+                _skipAdText.postValue(getResidualSkipAdTimeText())
             }
             _skipCountdownFinished.postValue(true)
         }
     }
 
-    private fun getResidualSkipTimeText() = String.format(
-        Locale.getDefault(),
-        appContext.getString(R.string.main_skip_ad),
-        mResidualSkipTime.toString().padStart(2, '0')
-    )
-
     /**
-     * 跳过广告
+     * 跳过广告点击
      */
     fun onClickSkipAd() {
         _isSkipAd.postValue(true)
     }
+
+    /**
+     * 获取倒计时文字
+     */
+    private fun getCountdownText() = String.format(
+        Locale.getDefault(),
+        appContext.getString(R.string.main_countdown),
+        mResidualSkipTime.toString().padStart(2, '0')
+    )
+
+    /**
+     * 获取剩余跳过广告时间文字
+     */
+    private fun getResidualSkipAdTimeText() = String.format(
+        Locale.getDefault(),
+        appContext.getString(R.string.main_skip_ad),
+        mResidualSkipTime.toString().padStart(2, '0')
+    )
 
     /**
      * 下载广告图片
@@ -135,5 +153,6 @@ class SplashViewModel : BaseViewModel() {
 
     companion object {
         const val SKIP_COUNTDOWN_TIME = 5
+        const val SKIP_COUNTDOWN_TIME_MILLIS = SKIP_COUNTDOWN_TIME * 1_000L
     }
 }

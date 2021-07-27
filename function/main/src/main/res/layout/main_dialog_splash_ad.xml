@@ -33,26 +33,39 @@
             app:placeholderResId="@{R.mipmap.common_ic_image_placeholder}"
             tools:src="@mipmap/common_ic_image_placeholder" />
 
-        <TextView
-            android:id="@+id/tvSkipAd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.fphoenixcorneae.progressbar.SmartProgressBar
+            android:id="@+id/spbSkipAd"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:gravity="center"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
-            android:text="@{viewModel.skipAdText}"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            app:drawable_radius="@{4}"
-            app:drawable_solidColor="@{@color/color_0x22000000}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:spb_animated="false"
+            app:spb_animated_duration="6000"
+            app:spb_clockwise="false"
+            app:spb_progress="100"
+            app:spb_progress_bar_bg_color="@color/color_0x22000000"
+            app:spb_progress_center_color="@android:color/holo_red_light"
+            app:spb_progress_end_color="@android:color/holo_red_light"
+            app:spb_progress_start_color="@android:color/holo_red_light"
+            app:spb_radius="22dp"
+            app:spb_shape_style="RING" />
+
+        <TextView
+            android:id="@+id/tvCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.countdownText}"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/spbSkipAd"
+            app:layout_constraintEnd_toEndOf="@id/spbSkipAd"
+            app:layout_constraintStart_toStartOf="@id/spbSkipAd"
+            app:layout_constraintTop_toTopOf="@id/spbSkipAd"
             app:onSingleClick="@{() -> viewModel.onClickSkipAd()}"
-            tools:text="@string/main_skip_ad" />
+            tools:text="@string/main_countdown" />
 
         <TextView
             android:id="@+id/tvCopyright"
@@ -69,6 +82,7 @@
             app:visible="@{!TextUtils.isEmpty(viewModel.copyright)}" />
 
         <View
+            android:id="@+id/viewLogoBg"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@android:color/white"
@@ -84,5 +98,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSkipAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="@{viewModel.skipAdText}"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:drawable_radius="@{4}"
+            app:drawable_solidColor="@{@color/color_0x22000000}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/viewLogoBg"
+            app:onSingleClick="@{() -> viewModel.onClickSkipAd()}"
+            tools:text="@string/main_skip_ad" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

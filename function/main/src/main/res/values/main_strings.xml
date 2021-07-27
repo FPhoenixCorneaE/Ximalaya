@@ -1,4 +1,5 @@
 <resources>
     <string name="main_app_name">喜马拉雅</string>
+    <string name="main_countdown">%ss</string>
     <string name="main_skip_ad">跳过广告 %s</string>
 </resources>
