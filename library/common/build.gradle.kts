@@ -5,6 +5,12 @@ plugins {
     id(Plugin.composingBuilds)
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.name)
+    }
+}
+
 android {
     compileSdkVersion(Deps.Android.compileSdkVersion)
 
@@ -30,5 +36,8 @@ dependencies {
     api(Deps.FPhoenixCorneaE.jetpackMvvm)
     api(Deps.FPhoenixCorneaE.commonUtil)
     api(Deps.FPhoenixCorneaE.smartProgressBar)
+    api(Deps.FPhoenixCorneaE.easyNavigation)
+    kapt(Deps.ARouter.compiler)
     api(project(mapOf("path" to ":library:thirdpart")))
+    api(project(mapOf("path" to ":library:ximalaya")))
 }

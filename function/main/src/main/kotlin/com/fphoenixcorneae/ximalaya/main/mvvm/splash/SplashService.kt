@@ -5,7 +5,7 @@ import retrofit2.http.Query
 
 /**
  * @desc：SplashService
- * @date：2021-07-13 14:00
+ * @date：2021/07/13 14:00
  */
 interface SplashService {
 

@@ -9,6 +9,7 @@ import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
 import com.fphoenixcorneae.permission.request
 import com.fphoenixcorneae.util.AppUtil
 import com.fphoenixcorneae.util.IntentUtil
+import com.fphoenixcorneae.ximalaya.common.router.main.MainRouterHelper
 import com.fphoenixcorneae.ximalaya.main.databinding.MainActivitySplashBinding
 import kotlinx.coroutines.delay
 
@@ -46,7 +47,13 @@ class SplashActivity : BaseActivity<MainActivitySplashBinding>() {
         request(*permissions) {
             onGranted {
                 "onGranted".logd("requestPermissions")
-                SplashAdDialog().show(mContext)
+                SplashAdDialog().apply {
+                    dialog?.setOnDismissListener {
+                        finish()
+                    }
+                    show(mContext)
+                }
+                MainRouterHelper.navigation()
             }
             onDenied {
                 "onDenied".logd("requestPermissions")

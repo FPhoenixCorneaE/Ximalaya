@@ -13,12 +13,14 @@ object Deps {
         const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.5"
         const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
         const val smartProgressBar = "com.github.FPhoenixCorneaE:SmartProgressBar:1.0.3"
+        const val easyNavigation = "com.github.FPhoenixCorneaE:EasyNavigation:1.0.5"
     }
 
     /** Plugin */
     object Plugin {
         const val kotlinAndroid = "kotlin-android"
         const val kotlinKapt = "kotlin-kapt"
+        const val aRouter = "com.alibaba.arouter"
     }
 
     /** Android */

@@ -8,11 +8,13 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <!-- 启动页面主题 -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/main_shape_splash_bg</item>
     </style>
 
+    <!-- 启动广告弹窗动画 -->
     <style name="SplashAdDialogAnimation">
         <item name="android:windowEnterAnimation">@anim/main_dialog_enter_splash_ad</item>
         <item name="android:windowExitAnimation">@anim/main_dialog_exit_splash_ad</item>

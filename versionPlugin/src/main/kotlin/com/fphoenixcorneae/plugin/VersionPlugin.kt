@@ -61,6 +61,7 @@ class VersionPlugin : Plugin<Project> {
         plugins.apply {
             apply(Deps.Plugin.kotlinAndroid)
             apply(Deps.Plugin.kotlinKapt)
+            apply(Deps.Plugin.aRouter)
         }
     }
 
