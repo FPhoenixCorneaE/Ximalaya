@@ -8,6 +8,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.plugins.PluginContainer
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -16,8 +17,10 @@ class VersionPlugin : Plugin<Project> {
     companion object {
         const val api = "api"
         const val implementation = "implementation"
+        const val kapt = "kapt"
         const val testImplementation = "testImplementation"
         const val androidTestImplementation = "androidTestImplementation"
+        const val ARouterModuleName = "AROUTER_MODULE_NAME"
     }
 
     override fun apply(project: Project) {
@@ -31,6 +34,8 @@ class VersionPlugin : Plugin<Project> {
                 is AppPlugin -> {
                     // 公共插件
                     project.configCommonPlugin()
+                    // 公共 kapt 配置项
+                    project.extensions.getByType<KaptExtension>().applyCommonKapt(project)
                     // 公共 android 配置项
                     project.extensions.getByType<AppExtension>().applyAppCommons(project)
                     // 公共依赖
@@ -40,6 +45,8 @@ class VersionPlugin : Plugin<Project> {
                 is LibraryPlugin -> {
                     // 公共插件
                     project.configCommonPlugin()
+                    // 公共 kapt 配置项
+                    project.extensions.getByType<KaptExtension>().applyCommonKapt(project)
                     // 公共 android 配置项
                     project.extensions.getByType<LibraryExtension>().applyLibraryCommons(project)
                     // 公共依赖
@@ -74,6 +81,9 @@ class VersionPlugin : Plugin<Project> {
             add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
             add(implementation, Deps.AndroidX.appcompat)
+            // ARouter
+            add(implementation, Deps.ARouter.api)
+            add(kapt, Deps.ARouter.compiler)
             configTestDependencies()
         }
     }
@@ -86,6 +96,9 @@ class VersionPlugin : Plugin<Project> {
             add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
             add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
+            // ARouter
+            add(implementation, Deps.ARouter.api)
+            add(kapt, Deps.ARouter.compiler)
             configTestDependencies()
         }
     }
@@ -179,6 +192,15 @@ class VersionPlugin : Plugin<Project> {
         lintOptions {
             isCheckReleaseBuilds = false
             isAbortOnError = false
+        }
+    }
+
+    /**
+     * kapt 配置项
+     */
+    private fun KaptExtension.applyCommonKapt(project: Project) {
+        arguments {
+            arg(ARouterModuleName, project.name)
         }
     }
 }

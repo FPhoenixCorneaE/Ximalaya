@@ -5,12 +5,6 @@ plugins {
     id(Plugin.composingBuilds)
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.name)
-    }
-}
-
 android {
     compileSdkVersion(Deps.Android.compileSdkVersion)
 
@@ -26,7 +20,5 @@ dependencies {
     compileOnly(Deps.Coroutines.core)
     compileOnly(Deps.Coroutines.android)
     compileOnly(Deps.FPhoenixCorneaE.commonUtil)
-    api(Deps.ARouter.api)
-    kapt(Deps.ARouter.compiler)
     api(Deps.ThirdPart.noDrawable)
 }

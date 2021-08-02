@@ -2,7 +2,7 @@ package com.fphoenixcorneae.ximalaya.common.router.main
 
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.aRouter
+import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
 
 /**
  * @desc：MainRouterHelper
@@ -10,11 +10,11 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.aRouter
  */
 object MainRouterHelper {
 
-    @Autowired(name = Router.Main.SERVICE)
+    @Autowired(name = Router.Service.MAIN)
     lateinit var mMainService: MainRouterService
 
     init {
-        aRouter.inject(this)
+        defaultARouter.inject(this)
     }
 
     fun navigation() {

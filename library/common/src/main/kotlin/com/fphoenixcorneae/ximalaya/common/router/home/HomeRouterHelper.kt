@@ -3,7 +3,7 @@ package com.fphoenixcorneae.ximalaya.common.router.home
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.aRouter
+import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
 
 /**
  * @desc：HomeRouterHelper
@@ -11,11 +11,11 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.aRouter
  */
 object HomeRouterHelper {
 
-    @Autowired(name = Router.Home.SERVICE)
+    @Autowired(name = Router.Service.HOME)
     lateinit var mHomeService: HomeRouterService
 
     init {
-        aRouter.inject(this)
+        defaultARouter.inject(this)
     }
 
     fun navigation(): Fragment {

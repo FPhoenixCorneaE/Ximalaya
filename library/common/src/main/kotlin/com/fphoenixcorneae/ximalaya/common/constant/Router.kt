@@ -2,13 +2,16 @@ package com.fphoenixcorneae.ximalaya.common.constant
 
 object Router {
 
+    object Service {
+        const val MAIN = "/service/main"
+        const val HOME = "/service/home"
+    }
+
     object Main {
-        const val SERVICE = "/main/service"
         const val MAIN = "/main/main"
     }
 
     object Home {
-        const val SERVICE = "/home/service"
         const val MAIN = "/home/main"
     }
 
