@@ -49,8 +49,8 @@ class MainActivity : BaseActivity<MainActivityMainBinding>() {
             )
             val colorResources = intArrayOf(0, 0, 0, 0)
             val imageResources = intArrayOf(
-                R.mipmap.main_ic_tab_home, R.mipmap.main_ic_tab_listen,
-                R.mipmap.main_ic_tab_discover, R.mipmap.main_ic_tab_mine,
+                R.drawable.main_ic_tab_home, R.drawable.main_ic_tab_listen,
+                R.drawable.main_ic_tab_discover, R.drawable.main_ic_tab_mine,
             )
             // 设置底部导航栏
             rlNavigation.disableSmoothScroll()

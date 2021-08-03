@@ -3,7 +3,7 @@ package com.fphoenixcorneae.ximalaya.common.constant
 import com.fphoenixcorneae.util.PathUtil
 
 /**
- * @desc：常量
+ * @desc：Constant
  * @date：2021/07/14 11:08
  */
 object Constant {
