@@ -12,10 +12,10 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpMain"
+            userInputEnabled="@{false}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="64dp"
-            app:userInputEnabled="@{false}" />
+            android:layout_marginBottom="64dp" />
 
         <com.fphoenixcorneae.navigation.EasyNavigation
             android:id="@+id/rlNavigation"

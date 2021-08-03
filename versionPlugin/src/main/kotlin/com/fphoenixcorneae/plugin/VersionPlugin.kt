@@ -20,7 +20,7 @@ class VersionPlugin : Plugin<Project> {
         const val kapt = "kapt"
         const val testImplementation = "testImplementation"
         const val androidTestImplementation = "androidTestImplementation"
-        const val ARouterModuleName = "AROUTER_MODULE_NAME"
+        const val AROUTER_MODULE_NAME = "AROUTER_MODULE_NAME"
     }
 
     override fun apply(project: Project) {
@@ -200,7 +200,7 @@ class VersionPlugin : Plugin<Project> {
      */
     private fun KaptExtension.applyCommonKapt(project: Project) {
         arguments {
-            arg(ARouterModuleName, project.name)
+            arg(AROUTER_MODULE_NAME, project.name)
         }
     }
 }

@@ -5,6 +5,9 @@ object Router {
     object Service {
         const val MAIN = "/service/main"
         const val HOME = "/service/home"
+        const val LISTEN = "/service/listen"
+        const val DISCOVER = "/service/discover"
+        const val MINE = "/service/mine"
     }
 
     object Main {
@@ -23,7 +26,7 @@ object Router {
         const val MAIN = "/discover/main"
     }
 
-    object User {
-        const val MAIN = "/user/main"
+    object Mine {
+        const val MAIN = "/mine/main"
     }
 }

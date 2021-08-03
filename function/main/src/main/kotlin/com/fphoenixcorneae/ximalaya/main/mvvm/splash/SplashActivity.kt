@@ -47,13 +47,12 @@ class SplashActivity : BaseActivity<MainActivitySplashBinding>() {
         request(*permissions) {
             onGranted {
                 "onGranted".logd("requestPermissions")
-                SplashAdDialog().apply {
-                    dialog?.setOnDismissListener {
+                SplashAdDialog()
+                    .setOnDismissListener {
+                        MainRouterHelper.navigation()
                         finish()
                     }
-                    show(mContext)
-                }
-                MainRouterHelper.navigation()
+                    .show(mContext)
             }
             onDenied {
                 "onDenied".logd("requestPermissions")
