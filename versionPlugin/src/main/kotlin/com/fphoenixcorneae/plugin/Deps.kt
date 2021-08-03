@@ -13,7 +13,7 @@ object Deps {
         const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.8"
         const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
         const val smartProgressBar = "com.github.FPhoenixCorneaE:SmartProgressBar:1.0.3"
-        const val easyNavigation = "com.github.FPhoenixCorneaE.EasyNavigation:easyNavigation:1.0.7"
+        const val easyNavigation = "com.github.FPhoenixCorneaE.EasyNavigation:easyNavigation:1.0.8"
     }
 
     /** Plugin */
