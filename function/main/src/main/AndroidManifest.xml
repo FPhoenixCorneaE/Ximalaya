@@ -14,7 +14,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize|locale|screenLayout|uiMode|smallestScreenSize|layoutDirection"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme"
+            android:theme="@style/AppTheme.SplashTheme"
             android:windowSoftInputMode="adjustUnspecified|stateUnchanged|stateHidden|stateAlwaysHidden|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +26,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize|locale|screenLayout|uiMode|smallestScreenSize|layoutDirection"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Fullscreen"
             android:windowSoftInputMode="adjustUnspecified|stateUnchanged|stateHidden|stateAlwaysHidden|adjustResize" />
     </application>
 </manifest>

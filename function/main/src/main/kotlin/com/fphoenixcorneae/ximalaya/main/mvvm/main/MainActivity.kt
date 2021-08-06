@@ -1,5 +1,6 @@
 package com.fphoenixcorneae.ximalaya.main.mvvm.main
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,6 +28,10 @@ class MainActivity : BaseActivity<MainActivityMainBinding>() {
 
     override fun initViewBinding(): MainActivityMainBinding {
         return MainActivityMainBinding.inflate(layoutInflater)
+    }
+
+    override fun initToolbar(): View? {
+        return null
     }
 
     override fun initView() {

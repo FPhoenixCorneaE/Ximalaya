@@ -10,7 +10,7 @@ object Deps {
         }
 
         const val coRetrofit = "com.github.FPhoenixCorneaE:CoRetrofit:1.0.1"
-        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.8"
+        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.9"
         const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
         const val smartProgressBar = "com.github.FPhoenixCorneaE:SmartProgressBar:1.0.3"
         const val easyNavigation = "com.github.FPhoenixCorneaE.EasyNavigation:easyNavigation:1.0.8"
