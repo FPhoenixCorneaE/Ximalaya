@@ -42,7 +42,7 @@ object Deps {
 
     /** Kotlin */
     object Kotlin {
-        private const val version = "1.5.20"
+        private const val version = "1.5.30"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
     }
 

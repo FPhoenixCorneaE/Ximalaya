@@ -185,10 +185,6 @@ class VersionPlugin : Plugin<Project> {
             }
         }
 
-        dexOptions {
-            jumboMode = true
-        }
-
         lintOptions {
             isCheckReleaseBuilds = false
             isAbortOnError = false

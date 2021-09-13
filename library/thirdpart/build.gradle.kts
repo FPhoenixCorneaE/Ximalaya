@@ -12,6 +12,14 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
+    configurations.all {
+        resolutionStrategy {
+            // 强制依赖指定版本
+            force(Deps.Coroutines.core)
+            force(Deps.Coroutines.android)
+        }
+    }
 }
 
 dependencies {

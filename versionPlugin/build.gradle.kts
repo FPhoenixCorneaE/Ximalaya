@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
     }
 }
 plugins {
@@ -19,8 +19,8 @@ repositories {
 
 dependencies {
     compileOnly(gradleApi())
-    compileOnly("com.android.tools.build:gradle:4.2.2")
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+    compileOnly("com.android.tools.build:gradle:7.0.2")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
 }
 
 gradlePlugin {

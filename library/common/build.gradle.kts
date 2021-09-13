@@ -16,6 +16,10 @@ android {
 
 dependencies {
     compileOnly(Deps.Kotlin.stdlib)
+    // project
+    api(project(mapOf("path" to ":library:thirdpart")))
+    api(project(mapOf("path" to ":library:ximalaya")))
+    // androidX
     api(Deps.AndroidX.appcompat)
     api(Deps.AndroidX.constraintLayout)
     api(Deps.AndroidX.material)
@@ -26,11 +30,14 @@ dependencies {
     api(Deps.AndroidX.fragmentKtx)
     api(Deps.AndroidX.recyclerView)
     api(Deps.AndroidX.viewpager2)
+    // coroutinesRetrofit
     api(Deps.FPhoenixCorneaE.coRetrofit)
+    // jetpackMvvm
     api(Deps.FPhoenixCorneaE.jetpackMvvm)
+    // commonUtil
     api(Deps.FPhoenixCorneaE.commonUtil)
+    // smartProgressBar
     api(Deps.FPhoenixCorneaE.smartProgressBar)
+    // easyNavigation
     api(Deps.FPhoenixCorneaE.easyNavigation)
-    api(project(mapOf("path" to ":library:thirdpart")))
-    api(project(mapOf("path" to ":library:ximalaya")))
 }
