@@ -3,6 +3,7 @@
     package="com.fphoenixcorneae.ximalaya.main">
 
     <application
+        android:name=".mvvm.XmlyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ting"
         android:label="@string/main_app_name"

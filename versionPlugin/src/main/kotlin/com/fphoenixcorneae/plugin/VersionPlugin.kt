@@ -1,6 +1,10 @@
 package com.fphoenixcorneae.plugin
 
-import com.android.build.gradle.*
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -37,7 +41,7 @@ class VersionPlugin : Plugin<Project> {
                     // 公共 kapt 配置项
                     project.extensions.getByType<KaptExtension>().applyCommonKapt(project)
                     // 公共 android 配置项
-                    project.extensions.getByType<AppExtension>().applyAppCommons(project)
+                    project.extensions.getByType<BaseAppModuleExtension>().applyAppCommons(project)
                     // 公共依赖
                     project.configAppDependencies()
                 }
@@ -68,6 +72,7 @@ class VersionPlugin : Plugin<Project> {
         plugins.apply {
             apply(Deps.Plugin.kotlinAndroid)
             apply(Deps.Plugin.kotlinKapt)
+            apply(Deps.Plugin.androidAspectj)
             apply(Deps.Plugin.aRouter)
         }
     }
@@ -96,6 +101,9 @@ class VersionPlugin : Plugin<Project> {
             add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
             add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
+            // Aspectj
+            add(implementation, Deps.FPhoenixCorneaE.AndroidAspectj.aspectj)
+            add(kapt, Deps.FPhoenixCorneaE.AndroidAspectj.aspectjCompiler)
             // ARouter
             add(implementation, Deps.ARouter.api)
             add(kapt, Deps.ARouter.compiler)
@@ -116,9 +124,13 @@ class VersionPlugin : Plugin<Project> {
     /**
      * app Module 配置项，此处固定了 applicationId
      */
-    private fun AppExtension.applyAppCommons(project: Project) {
+    private fun BaseAppModuleExtension.applyAppCommons(project: Project) {
         defaultConfig {
             applicationId = Deps.Android.applicationId
+        }
+        buildFeatures {
+            viewBinding = true
+            dataBinding = true
         }
         applyBaseCommons(project)
     }
@@ -127,6 +139,10 @@ class VersionPlugin : Plugin<Project> {
      * library Module 配置项
      */
     private fun LibraryExtension.applyLibraryCommons(project: Project) {
+        buildFeatures {
+            viewBinding = true
+            dataBinding = true
+        }
         applyBaseCommons(project)
     }
 
@@ -138,8 +154,8 @@ class VersionPlugin : Plugin<Project> {
         buildToolsVersion(Deps.Android.buildToolsVersion)
 
         defaultConfig {
-            minSdkVersion(Deps.Android.minSdkVersion)
-            targetSdkVersion(Deps.Android.targetSdkVersion)
+            minSdk = Deps.Android.minSdkVersion
+            targetSdk = Deps.Android.targetSdkVersion
             versionCode = Deps.Android.versionCode
             versionName = Deps.Android.versionName
             testInstrumentationRunner = Deps.Test.androidJUnitRunner
@@ -175,17 +191,18 @@ class VersionPlugin : Plugin<Project> {
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
         }
 
         project.tasks.withType<KotlinCompile> {
             kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_1_8.toString()
+                jvmTarget = JavaVersion.VERSION_11.toString()
             }
         }
 
         lintOptions {
+            isCheckDependencies = true
             isCheckReleaseBuilds = false
             isAbortOnError = false
         }

@@ -6,12 +6,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Deps.Android.compileSdkVersion)
-
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-    }
+    compileSdk = Deps.Android.compileSdkVersion
 }
 
 dependencies {

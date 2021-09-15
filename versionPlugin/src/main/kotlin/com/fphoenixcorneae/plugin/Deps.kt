@@ -10,7 +10,7 @@ object Deps {
         }
 
         const val coRetrofit = "com.github.FPhoenixCorneaE:CoRetrofit:1.0.1"
-        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.1.9"
+        const val jetpackMvvm = "com.github.FPhoenixCorneaE:JetpackMvvm:1.2.1"
         const val commonUtil = "com.github.FPhoenixCorneaE:CommonUtil:1.1.2"
         const val smartProgressBar = "com.github.FPhoenixCorneaE:SmartProgressBar:1.0.3"
         const val easyNavigation = "com.github.FPhoenixCorneaE.EasyNavigation:easyNavigation:1.0.8"
@@ -20,6 +20,7 @@ object Deps {
     object Plugin {
         const val kotlinAndroid = "kotlin-android"
         const val kotlinKapt = "kotlin-kapt"
+        const val androidAspectj = "com.fphoenixcorneae.aspectj"
         const val aRouter = "com.alibaba.arouter"
     }
 
@@ -42,7 +43,7 @@ object Deps {
 
     /** Kotlin */
     object Kotlin {
-        private const val version = "1.5.30"
+        private const val version = "1.5.21"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
     }
 

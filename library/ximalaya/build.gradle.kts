@@ -6,5 +6,5 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Deps.Android.compileSdkVersion)
+    compileSdk = Deps.Android.compileSdkVersion
 }
