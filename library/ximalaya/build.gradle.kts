@@ -8,3 +8,8 @@ plugins {
 android {
     compileSdk = Deps.Android.compileSdkVersion
 }
+
+dependencies {
+    implementation(project(mapOf("path" to ":localRepo:ximalaya")))
+}
+

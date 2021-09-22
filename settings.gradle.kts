@@ -8,4 +8,5 @@ include(":function:mine")
 include(":library:common")
 include(":library:ximalaya")
 include(":library:thirdpart")
+include(":localRepo:ximalaya")
 rootProject.name = "Ximalaya"

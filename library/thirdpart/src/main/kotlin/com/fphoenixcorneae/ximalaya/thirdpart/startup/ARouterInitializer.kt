@@ -25,6 +25,8 @@ class ARouterInitializer : Initializer<Unit>, CoroutineScope by MainScope() {
                 ARouter.openLog()
                 // 开启调试模式（如果在 InstantRun 模式下运行，必须开启调试模式！线上版本需要关闭，否则有安全风险）
                 ARouter.openDebug()
+                // Print thread stack when printing logs
+                ARouter.printStackTrace()
             }
             // 尽可能早，推荐在 Application 中初始化
             ARouter.init(appContext)

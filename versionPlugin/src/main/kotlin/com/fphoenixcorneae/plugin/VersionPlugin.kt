@@ -82,8 +82,7 @@ class VersionPlugin : Plugin<Project> {
      */
     private fun Project.configAppDependencies() {
         dependencies.apply {
-            add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-            add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+            add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
             add(implementation, Deps.AndroidX.appcompat)
             // ARouter
@@ -98,8 +97,7 @@ class VersionPlugin : Plugin<Project> {
      */
     private fun Project.configLibraryDependencies() {
         dependencies.apply {
-            add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-            add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+            add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
             // Aspectj
             add(implementation, Deps.FPhoenixCorneaE.AndroidAspectj.aspectj)
