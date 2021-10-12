@@ -1,9 +1,11 @@
 package com.fphoenixcorneae.ximalaya.common.router.mine
 
 import androidx.fragment.app.Fragment
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
+import com.didi.drouter.api.DRouter
+import com.fphoenixcorneae.ext.appContext
+import com.fphoenixcorneae.ximalaya.common.constant.Route
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * @desc：MineRouterHelper
@@ -11,14 +13,12 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
  */
 object MineRouterHelper {
 
-    @Autowired(name = Router.Service.MINE)
-    lateinit var mMineService: MineRouterService
-
-    init {
-        defaultARouter.inject(this)
-    }
-
-    fun navigation(): Fragment {
-        return mMineService.navigation()
+    suspend fun navigation(): Fragment = kotlin.run {
+        suspendCoroutine { coroutine ->
+            DRouter.build(Route.Mine.MAIN)
+                .start(appContext) {
+                    coroutine.resume(it.fragment)
+                }
+        }
     }
 }

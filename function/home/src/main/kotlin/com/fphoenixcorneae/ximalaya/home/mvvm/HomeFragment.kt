@@ -1,12 +1,12 @@
 package com.fphoenixcorneae.ximalaya.home.mvvm
 
 import android.view.View
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.didi.drouter.annotation.Router
 import com.fphoenixcorneae.ext.dpToPx
 import com.fphoenixcorneae.jetpackmvvm.base.fragment.BaseFragment
 import com.fphoenixcorneae.toolbar.CommonToolbar
 import com.fphoenixcorneae.util.ResourceUtil
-import com.fphoenixcorneae.ximalaya.common.constant.Router
+import com.fphoenixcorneae.ximalaya.common.constant.Route
 import com.fphoenixcorneae.ximalaya.home.R
 import com.fphoenixcorneae.ximalaya.home.databinding.HomeFragmentHomeBinding
 
@@ -14,7 +14,7 @@ import com.fphoenixcorneae.ximalaya.home.databinding.HomeFragmentHomeBinding
  * @desc：HomeFragment
  * @date：2021/07/30 17:02
  */
-@Route(path = Router.Home.MAIN)
+@Router(path = Route.Home.MAIN)
 class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
 
     override fun initViewBinding(): HomeFragmentHomeBinding {

@@ -24,7 +24,6 @@ class VersionPlugin : Plugin<Project> {
         const val kapt = "kapt"
         const val testImplementation = "testImplementation"
         const val androidTestImplementation = "androidTestImplementation"
-        const val AROUTER_MODULE_NAME = "AROUTER_MODULE_NAME"
     }
 
     override fun apply(project: Project) {
@@ -72,8 +71,6 @@ class VersionPlugin : Plugin<Project> {
         plugins.apply {
             apply(Deps.Plugin.kotlinAndroid)
             apply(Deps.Plugin.kotlinKapt)
-            apply(Deps.Plugin.androidAspectj)
-            apply(Deps.Plugin.aRouter)
         }
     }
 
@@ -85,9 +82,8 @@ class VersionPlugin : Plugin<Project> {
             add(implementation, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
             add(implementation, Deps.AndroidX.appcompat)
-            // ARouter
-            add(implementation, Deps.ARouter.api)
-            add(kapt, Deps.ARouter.compiler)
+            // DRouter
+            add(implementation, Deps.DRouter.api)
             configTestDependencies()
         }
     }
@@ -99,12 +95,8 @@ class VersionPlugin : Plugin<Project> {
         dependencies.apply {
             add(api, fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
             add(implementation, Deps.Kotlin.stdlib)
-            // Aspectj
-            add(implementation, Deps.FPhoenixCorneaE.AndroidAspectj.aspectj)
-            add(kapt, Deps.FPhoenixCorneaE.AndroidAspectj.aspectjCompiler)
-            // ARouter
-            add(implementation, Deps.ARouter.api)
-            add(kapt, Deps.ARouter.compiler)
+            // DRouter
+            add(implementation, Deps.DRouter.api)
             configTestDependencies()
         }
     }
@@ -211,7 +203,7 @@ class VersionPlugin : Plugin<Project> {
      */
     private fun KaptExtension.applyCommonKapt(project: Project) {
         arguments {
-            arg(AROUTER_MODULE_NAME, project.name)
+
         }
     }
 }

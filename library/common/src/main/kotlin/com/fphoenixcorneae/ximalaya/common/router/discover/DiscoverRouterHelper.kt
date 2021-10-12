@@ -1,9 +1,11 @@
 package com.fphoenixcorneae.ximalaya.common.router.discover
 
 import androidx.fragment.app.Fragment
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
+import com.didi.drouter.api.DRouter
+import com.fphoenixcorneae.ext.appContext
+import com.fphoenixcorneae.ximalaya.common.constant.Route
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * @desc：DiscoverRouterHelper
@@ -11,14 +13,12 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
  */
 object DiscoverRouterHelper {
 
-    @Autowired(name = Router.Service.DISCOVER)
-    lateinit var mDiscoverService: DiscoverRouterService
-
-    init {
-        defaultARouter.inject(this)
-    }
-
-    fun navigation(): Fragment {
-        return mDiscoverService.navigation()
+    suspend fun navigation(): Fragment = kotlin.run {
+        suspendCoroutine { coroutine ->
+            DRouter.build(Route.Discover.MAIN)
+                .start(appContext) {
+                    coroutine.resume(it.fragment)
+                }
+        }
     }
 }

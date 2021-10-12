@@ -1,8 +1,7 @@
 package com.fphoenixcorneae.ximalaya.common.router.main
 
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
+import com.didi.drouter.api.DRouter
+import com.fphoenixcorneae.ximalaya.common.constant.Route
 
 /**
  * @desc：MainRouterHelper
@@ -10,14 +9,7 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
  */
 object MainRouterHelper {
 
-    @Autowired(name = Router.Service.MAIN)
-    lateinit var mMainService: MainRouterService
-
-    init {
-        defaultARouter.inject(this)
-    }
-
-    fun navigation() {
-        mMainService.navigation()
+    fun navigation() = kotlin.run {
+        DRouter.build(Route.Main.MAIN).start()
     }
 }

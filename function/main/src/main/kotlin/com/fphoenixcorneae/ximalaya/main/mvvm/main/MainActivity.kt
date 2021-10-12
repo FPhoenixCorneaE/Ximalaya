@@ -4,13 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.alibaba.android.arouter.facade.annotation.Route
+import com.didi.drouter.annotation.Router
 import com.fphoenixcorneae.ext.dp2Px
 import com.fphoenixcorneae.ext.dpToPx
 import com.fphoenixcorneae.ext.toast
 import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
-import com.fphoenixcorneae.ximalaya.common.constant.Router
+import com.fphoenixcorneae.ximalaya.common.constant.Route
 import com.fphoenixcorneae.ximalaya.common.router.discover.DiscoverRouterHelper
 import com.fphoenixcorneae.ximalaya.common.router.home.HomeRouterHelper
 import com.fphoenixcorneae.ximalaya.common.router.listen.ListenRouterHelper
@@ -18,12 +19,13 @@ import com.fphoenixcorneae.ximalaya.common.router.mine.MineRouterHelper
 import com.fphoenixcorneae.ximalaya.common.widget.GlobalPlay
 import com.fphoenixcorneae.ximalaya.main.R
 import com.fphoenixcorneae.ximalaya.main.databinding.MainActivityMainBinding
+import kotlinx.coroutines.launch
 
 /**
  * @desc：MainActivity
  * @date：2021/07/27 10:14
  */
-@Route(path = Router.Main.MAIN)
+@Router(path = Route.Main.MAIN)
 class MainActivity : BaseActivity<MainActivityMainBinding>() {
 
     override fun initViewBinding(): MainActivityMainBinding {
@@ -36,21 +38,23 @@ class MainActivity : BaseActivity<MainActivityMainBinding>() {
 
     override fun initView() {
         mViewBinding.apply {
-            val fragments = listOf(
-                HomeRouterHelper.navigation(),
-                ListenRouterHelper.navigation(),
-                DiscoverRouterHelper.navigation(),
-                MineRouterHelper.navigation(),
-            )
-            vpMain.adapter = object : FragmentStateAdapter(mContext) {
-                override fun getItemCount(): Int {
-                    return fragments.size
-                }
+            lifecycleScope.launch {
+                val fragments = listOf(
+                    HomeRouterHelper.navigation(),
+                    ListenRouterHelper.navigation(),
+                    DiscoverRouterHelper.navigation(),
+                    MineRouterHelper.navigation(),
+                )
+                vpMain.adapter = object : FragmentStateAdapter(mContext) {
+                    override fun getItemCount(): Int {
+                        return fragments.size
+                    }
 
-                override fun createFragment(position: Int): Fragment {
-                    return fragments[position]
-                }
+                    override fun createFragment(position: Int): Fragment {
+                        return fragments[position]
+                    }
 
+                }
             }
             // 设置底部导航栏
             val titles = arrayListOf(

@@ -3,6 +3,7 @@ import com.fphoenixcorneae.plugin.Deps
 plugins {
     id(Plugin.androidApplication)
     id(Plugin.composingBuilds)
+    id(Plugin.dRouter)
 }
 
 android {

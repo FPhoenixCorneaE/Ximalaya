@@ -10,7 +10,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.fphoenixcorneae.ximalaya.thirdpart.startup.ARouterInitializer"
+                android:name="com.fphoenixcorneae.ximalaya.thirdpart.startup.DRouterInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

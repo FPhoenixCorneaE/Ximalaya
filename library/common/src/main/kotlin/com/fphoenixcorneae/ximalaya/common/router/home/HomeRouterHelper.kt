@@ -1,9 +1,11 @@
 package com.fphoenixcorneae.ximalaya.common.router.home
 
 import androidx.fragment.app.Fragment
-import com.alibaba.android.arouter.facade.annotation.Autowired
-import com.fphoenixcorneae.ximalaya.common.constant.Router
-import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
+import com.didi.drouter.api.DRouter
+import com.fphoenixcorneae.ext.appContext
+import com.fphoenixcorneae.ximalaya.common.constant.Route
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 /**
  * @desc：HomeRouterHelper
@@ -11,14 +13,12 @@ import com.fphoenixcorneae.ximalaya.thirdpart.ext.defaultARouter
  */
 object HomeRouterHelper {
 
-    @Autowired(name = Router.Service.HOME)
-    lateinit var mHomeService: HomeRouterService
-
-    init {
-        defaultARouter.inject(this)
-    }
-
-    fun navigation(): Fragment {
-        return mHomeService.navigation()
+    suspend fun navigation(): Fragment = kotlin.run {
+        suspendCoroutine { coroutine ->
+            DRouter.build(Route.Home.MAIN)
+                .start(appContext) {
+                    coroutine.resume(it.fragment)
+                }
+        }
     }
 }

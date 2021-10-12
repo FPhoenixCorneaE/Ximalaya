@@ -20,8 +20,6 @@ object Deps {
     object Plugin {
         const val kotlinAndroid = "kotlin-android"
         const val kotlinKapt = "kotlin-kapt"
-        const val androidAspectj = "com.fphoenixcorneae.aspectj"
-        const val aRouter = "com.alibaba.arouter"
     }
 
     /** Android */
@@ -82,11 +80,10 @@ object Deps {
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version}"
     }
 
-    /** ARouter */
-    object ARouter {
-        private const val version = "1.5.2"
-        const val api = "com.alibaba:arouter-api:$version"
-        const val compiler = "com.alibaba:arouter-compiler:$version"
+    /** DRouter */
+    object DRouter {
+        private const val version = "2.1.3"
+        const val api = "io.github.didi:drouter-api:$version"
     }
 
     /** ThirdPart */
