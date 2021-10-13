@@ -30,6 +30,7 @@ class SplashActivity : BaseActivity<MainActivitySplashBinding>() {
     override fun initData(savedInstanceState: Bundle?) {
         lifecycleScope.launchWhenStarted {
             delay(SPLASH_STAY_TIME)
+            // 申请权限
             requestPermissions()
         }
     }

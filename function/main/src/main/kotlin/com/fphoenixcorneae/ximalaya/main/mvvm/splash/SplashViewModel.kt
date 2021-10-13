@@ -1,7 +1,5 @@
 package com.fphoenixcorneae.ximalaya.main.mvvm.splash
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.fphoenixcorneae.coretrofit.RetrofitFactory
 import com.fphoenixcorneae.ext.appContext
@@ -15,6 +13,8 @@ import com.fphoenixcorneae.ximalaya.common.ext.launch
 import com.fphoenixcorneae.ximalaya.common.service.CommonService
 import com.fphoenixcorneae.ximalaya.main.R
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.*
@@ -38,36 +38,30 @@ class SplashViewModel : BaseViewModel() {
     /**
      * 广告图片
      */
-    private val _imgAd = MutableLiveData<Any?>()
-    val imgAd: LiveData<Any?>
-        get() = _imgAd
+    private val _imgAd = MutableStateFlow<Any?>(null)
+    val imgAd = _imgAd.asStateFlow()
 
     /**
      * 广告版权所有
      */
-    private val _copyright = MutableLiveData<CharSequence?>()
-    val copyright: LiveData<CharSequence?>
-        get() = _copyright
+    private val _copyright = MutableStateFlow<CharSequence?>(null)
+    val copyright = _copyright.asStateFlow()
 
     /** 倒计时文本 */
-    private val _countdownText = MutableLiveData(getCountdownText())
-    val countdownText: LiveData<String>
-        get() = _countdownText
+    private val _countdownText = MutableStateFlow(getCountdownText())
+    val countdownText = _countdownText.asStateFlow()
 
     /** 跳过广告倒计时文本 */
-    private val _skipAdText = MutableLiveData(getResidualSkipAdTimeText())
-    val skipAdText: LiveData<String>
-        get() = _skipAdText
+    private val _skipAdText = MutableStateFlow(getResidualSkipAdTimeText())
+    val skipAdText = _skipAdText.asStateFlow()
 
     /** 跳过广告倒计时结束 */
-    private val _skipCountdownFinished = MutableLiveData<Boolean>()
-    val skipCountdownFinished: LiveData<Boolean>
-        get() = _skipCountdownFinished
+    private val _skipCountdownFinished = MutableStateFlow(false)
+    val skipCountdownFinished = _skipCountdownFinished.asStateFlow()
 
     /** 是否跳过广告 */
-    private val _isSkipAd = MutableLiveData<Boolean>()
-    val isSkipAd: LiveData<Boolean>
-        get() = _isSkipAd
+    private val _isSkipAd = MutableStateFlow(false)
+    val isSkipAd = _isSkipAd.asStateFlow()
 
     /**
      * 获取启动广告
@@ -82,14 +76,14 @@ class SplashViewModel : BaseViewModel() {
             // 如果本地广告 url 与网络返回的广告 url 一致则不下载
             if (localAdUrl == adUrl && FileUtil.isFileExists(localAdImgFile)) {
                 val adImgUri = FileProviderUtil.getUriForFile(localAdImgFile)
-                _imgAd.postValue(adImgUri)
+                _imgAd.value = adImgUri
                 val copyright = defaultMMKV.decodeString(Constant.SP.AD_COPYRIGHT)
-                _copyright.postValue(copyright.indent())
+                _copyright.value = copyright.indent()
             } else {
                 val copyright = it.images?.get(0)?.copyright
                 val copyrightLink = it.images?.get(0)?.copyrightLink
-                _imgAd.postValue(adUrl)
-                _copyright.postValue(copyright.indent())
+                _imgAd.value = adUrl
+                _copyright.value = copyright.indent()
                 downloadAdImg(adUrl, copyright, copyrightLink)
             }
         })
@@ -103,10 +97,10 @@ class SplashViewModel : BaseViewModel() {
             repeat(SKIP_COUNTDOWN_TIME + 1) {
                 delay(1_000)
                 mResidualSkipTime--
-                _countdownText.postValue(getCountdownText())
-                _skipAdText.postValue(getResidualSkipAdTimeText())
+                _countdownText.value = getCountdownText()
+                _skipAdText.value = getResidualSkipAdTimeText()
             }
-            _skipCountdownFinished.postValue(true)
+            _skipCountdownFinished.value = true
         }
     }
 
@@ -114,7 +108,7 @@ class SplashViewModel : BaseViewModel() {
      * 跳过广告点击
      */
     fun onClickSkipAd() {
-        _isSkipAd.postValue(true)
+        _isSkipAd.value = true
     }
 
     /**
