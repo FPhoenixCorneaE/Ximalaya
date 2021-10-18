@@ -89,6 +89,7 @@ object Deps {
     /** ThirdPart */
     object ThirdPart {
         const val noDrawable = "com.github.whataa:noDrawable:1.1.1"
+        const val magicIndicator = "com.github.hackware1993:MagicIndicator:1.7.0"
     }
 
     /** Test */

@@ -24,4 +24,5 @@ dependencies {
     compileOnly(Deps.Coroutines.android)
     compileOnly(Deps.FPhoenixCorneaE.commonUtil)
     api(Deps.ThirdPart.noDrawable)
+    api(Deps.ThirdPart.magicIndicator)
 }

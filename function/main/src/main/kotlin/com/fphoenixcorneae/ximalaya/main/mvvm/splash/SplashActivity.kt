@@ -3,6 +3,9 @@ package com.fphoenixcorneae.ximalaya.main.mvvm.splash
 import android.Manifest
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.fphoenixcorneae.ext.logd
 import com.fphoenixcorneae.jetpackmvvm.base.activity.BaseActivity
@@ -25,6 +28,18 @@ class SplashActivity : BaseActivity<MainActivitySplashBinding>() {
 
     override fun initToolbar(): View? {
         return null
+    }
+
+    override fun initView() {
+        val controller = ViewCompat.getWindowInsetsController(window.decorView)
+        controller?.apply {
+            // 隐藏状态栏
+            hide(WindowInsetsCompat.Type.statusBars())
+            // 隐藏虚拟按键
+            hide(WindowInsetsCompat.Type.navigationBars())
+            //
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 
     override fun initData(savedInstanceState: Bundle?) {

@@ -7,12 +7,14 @@
         android:allowBackup="true"
         android:icon="@drawable/ting"
         android:label="@string/main_app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/ting"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.fphoenixcorneae.ximalaya.main.mvvm.splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|locale|screenLayout|uiMode|smallestScreenSize|layoutDirection"
+            android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.SplashTheme"

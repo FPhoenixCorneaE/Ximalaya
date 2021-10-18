@@ -2,6 +2,9 @@ package com.fphoenixcorneae.ximalaya.main.mvvm.splash
 
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.fphoenixcorneae.jetpackmvvm.base.dialog.BaseDialog
@@ -26,6 +29,16 @@ class SplashAdDialog : BaseDialog<MainDialogSplashAdBinding>() {
         mViewBinding.apply {
             viewModel = mViewModel
             spbSkipAd.setProgress(0f, SplashViewModel.SKIP_COUNTDOWN_TIME_MILLIS)
+
+            val controller = ViewCompat.getWindowInsetsController(clRoot)
+            controller?.apply {
+                // 隐藏状态栏
+                hide(WindowInsetsCompat.Type.statusBars())
+                // 隐藏虚拟按键
+                hide(WindowInsetsCompat.Type.navigationBars())
+                //
+                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
         }
     }
 

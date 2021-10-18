@@ -3,6 +3,9 @@ package com.fphoenixcorneae.ximalaya.main.mvvm.main
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -87,6 +90,16 @@ class MainActivity : BaseActivity<MainActivityMainBinding>() {
                     toast("click global play view!")
                 }
                 .setupWithViewPager2(vpMain, titles, colorResources, imageResources)
+        }
+
+        val controller = ViewCompat.getWindowInsetsController(window.decorView)
+        controller?.apply {
+            // 隐藏状态栏
+            hide(WindowInsetsCompat.Type.statusBars())
+            // 隐藏虚拟按键
+            hide(WindowInsetsCompat.Type.navigationBars())
+            //
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }

@@ -6,6 +6,7 @@ import com.fphoenixcorneae.ext.dpToPx
 import com.fphoenixcorneae.jetpackmvvm.base.fragment.BaseFragment
 import com.fphoenixcorneae.toolbar.CommonToolbar
 import com.fphoenixcorneae.util.ResourceUtil
+import com.fphoenixcorneae.util.statusbar.StatusBarUtil
 import com.fphoenixcorneae.ximalaya.common.constant.Route
 import com.fphoenixcorneae.ximalaya.home.R
 import com.fphoenixcorneae.ximalaya.home.databinding.HomeFragmentHomeBinding
@@ -33,5 +34,13 @@ class HomeFragment : BaseFragment<HomeFragmentHomeBinding>() {
             centerSearchEditable = false
         }
         return mToolbar
+    }
+
+    override fun initView() {
+        mViewBinding.apply {
+            mToolbar?.post {
+                clRoot.setPadding(0, StatusBarUtil.getStatusBarHeight(mContext) + mToolbar!!.height, 0, 0)
+            }
+        }
     }
 }
